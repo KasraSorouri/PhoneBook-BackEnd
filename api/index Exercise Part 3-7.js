@@ -39,7 +39,6 @@ app.use(bodyParser.json())
 
 app.use(logger)
 app.use(cors())
-app.use(express.static('build'))
 
 app.get('/api',(req,res)=>{
     res.send('<h1>Hello world !</h1>')
