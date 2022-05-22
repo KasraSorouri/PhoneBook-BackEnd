@@ -103,7 +103,7 @@ app.post('/api/persons',(req,res)=>{
         })
         .catch(error =>{
             console.log(error)
-        })
+    })
 })
 
 

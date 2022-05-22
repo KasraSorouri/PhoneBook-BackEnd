@@ -54,22 +54,12 @@ app.get('/api/persons/:id',(req,res)=>{
                 res.status(404).end()
             }
         })
-        .catch(error => {
-            console.log(error)
-            res.status(400).send({ error: 'malformatted id' })
-        })
 })
 
 app.delete('/api/persons/:id',(req,res)=>{
-    Person
-        .findByIdAndRemove(req.params.id)
-        .then(result => {
-            res.status(204).end()
-        })
-        .catch(error =>{
-            console.log(error)
-            res.status(404).send({ error: 'malformatted id' })
-        })
+    const id=Number(req.params.id);
+    persons=persons.filter(person => person.id !== id)
+    res.status(204).end()
 })
 
 

@@ -45,31 +45,20 @@ app.get('/api/persons',(req,res)=>{
 app.get('/api/persons/:id',(req,res)=>{
   //  console.log('res ->', res)
   //  console.log('req.param ->', res)
-    Person
-        .findById(req.params.id)
-        .then(person =>{
-            if(person){
-                res.json(formatPerson(person))
-            }else{
-                res.status(404).end()
-            }
-        })
-        .catch(error => {
-            console.log(error)
-            res.status(400).send({ error: 'malformatted id' })
-        })
+
+    const id=Number(req.params.id)
+    const person=persons.find(person => person.id===id)
+    if(person){
+        res.json(person)
+    }else{
+        res.status(404).end()
+    }
 })
 
 app.delete('/api/persons/:id',(req,res)=>{
-    Person
-        .findByIdAndRemove(req.params.id)
-        .then(result => {
-            res.status(204).end()
-        })
-        .catch(error =>{
-            console.log(error)
-            res.status(404).send({ error: 'malformatted id' })
-        })
+    const id=Number(req.params.id);
+    persons=persons.filter(person => person.id !== id)
+    res.status(204).end()
 })
 
 

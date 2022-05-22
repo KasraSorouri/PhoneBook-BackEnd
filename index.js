@@ -6,7 +6,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const cors =  require('cors')
 
-const Person = require('../models/person')
+const Person = require('./models/person')
 
 const formatPerson = (person) => {
     return {
@@ -95,7 +95,6 @@ app.post('/api/persons',(req,res)=>{
         name:body.name,
         number:body.number,
     })
-    console.log('new person ->')
     person
         .save()
         .then(savePerson => {
