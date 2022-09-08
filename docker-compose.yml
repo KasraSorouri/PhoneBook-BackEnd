@@ -2,7 +2,7 @@ version: '2.2'
 services:
     mongo:
         restart: always
-        image: mongo:latest
+        image: mongo:4.4.6
         expose:
             - 27017
         volumes:
